@@ -1,5 +1,5 @@
 # Bachelor Thesis
-My (german) bachelor's thesis was about creating a WebGL based rendering and input handling component for the [SimulatorX Realtime Interactive System](https://github.com/simulator-x). It's written in [LaTeX](http://www.latex-project.org/).
+My (german) bachelor's thesis was about creating a WebGL based rendering and input handling component for the [SimulatorX Realtime Interactive System](https://github.com/simulator-x). It's written in [LaTeX](http://www.latex-project.org/). The associated project can be found [here](https://github.com/Bomret/osiris).
 
 __Title__: Implementierung und Anbindung eines WebGL-Renderers an ein bestehendes Realtime Interactive System
 
