@@ -1,0 +1,25 @@
+\chapter{Einführung}
+\label{chap:einführung}
+\nocite{*}
+
+\section{Motivation}
+\label{sec:motivation}
+Immer mehr Anwendungen werden in das Internet verlagert. Zugriff darauf erlangt man in der Regel über den Browser. Dies hat enorme Vorteile sowohl für Entwickler und Unternehmen als auch die Anwender selbst. So können sich die Entwickler in der Regel auf eine Entwicklungsumgebung (HTML, CSS und JavaScript) konzentrieren und müssen keine plattformspezifischen Lösungen finden. Die Anwender benötigen nur einen modernen und standardkonformen Browser um die Anwendungen nutzen zu können. Mit HTML5 ist auch ein neuer Standard in der Entwicklung der selbst viele neue Möglichkeiten für Entwickler bringt (Canvas-Element, Geolocation-API, File-API etc.) und in dessen Umfeld ebenso neue Standards entstehen, mit denen sich Anwendungen realisieren lassen die früher schlichtweg so nicht denkbar waren.
+
+3D-Anwendungen wie Computerspiele oder CAD-Werkzeuge konnten bisher allerdings je nach Komplexität gar nicht oder nur über Drittanbieterlösungen (zum Beispiel Adobe Flash) im Browser angeboten werden. Ein neuer Standard aus dem Umfeld von HTML5 könnte die Situation jedoch stark verbessern: WebGL. WebGL ermöglicht es Entwicklern komplexe 3D-Anwendungen in Echtzeit ohne Plugins oder sonstige externe Lösungen nativ im Browser auszuführen. Die Berechnung der Inhalte erfolgt direkt auf der Grafikhardware des Clients und ermöglicht somit auch detailreiche und ressourcenintensive Darstellungen.
+
+\section{Zielsetzung}
+\label{sec:zielsetzung}
+Den Rahmen dieser Arbeit bildet eine Anwendungsexploration eines vernetzten 3D-Echtzeit-Renderingsystems, welches eine vordefinierte 3D-Szene darstellen und der Anwender darin enthaltene Entitäten per Tastendruck manipulieren kann. Das grafische Rendering der Szene wird von einem komplett selbst implementierten WebGL-Renderer übernommen, die Berechnung der Physik von einer ebenfalls an ein Realtime Interactive System angebundenen Physikengine. Das komplette System wird aus drei Komponenten bestehen:
+\begin{itemize}
+    \item \textbf{WebGL-Renderer}\\
+Der Renderer wird vollständig neu in JavaScript implementiert und im Browser des Clients ausgeführt. Er kommuniziert über ein WebSocket in Echtzeit mit dem Server.
+    \item \textbf{Webserver}\\
+Der Webserver stellt die benötigten Ressourcen (z.B. HTML-Seiten, Szenen, 3D-Modelle und Texturen) für den Client bereit und ist die zentrale Schnittstelle für die Kommunikation zwischen Client und RIS. Das heißt, dass der Server in Echtzeit Nachrichten vom Client empfängt, in ein für das RIS verständliches Format umwandelt und an dieses weiterleitet. Das gleiche gilt in entgegengesetzter Richtung für Nachrichten vom RIS an den Client.\\
+Als Plattform habe ich mich für das Play! Framework entschieden (siehe Abschnitt \textit{Konzeption}).
+    \item \textbf{Realtime Interactive System}\\
+Als RIS werde ich SIRIS verwenden. SIRIS enthält in der derzeit aktuellen Version die JBullet-Physikengine\footnote{\url{http://jbullet.advel.cz} (besucht am \today)}, welche die physikalischen Kräfte auf die Objekte in der Szene berechnen wird. SIRIS abstrahiert den Zugriff auf sie völlig, weshalb ich auch nicht näher auf sie eingehen werde. Zudem ist es möglich dass sie in Zukunft durch eine andere Physikengine ersetzt wird.
+
+Da SIRIS in Scala implementiert ist und das Play! Framework diese Programmiersprache ebenfalls anbietet werde ich die Anbindung des Renderers ebenfalls in Scala vornehmen.
+\end{itemize}
+Das komplette System wird Prototypenstatus haben. Zum Einen, da es im Zuge einer Bachelorarbeit mit ihrem eng gefassten Zeitrahmen nur schwerlich möglich ist sich allein in alle benötigten Themenfelder einzuarbeiten und ein "`vollständiges"' System aufzubauen. Zum Anderen sind die verwendeten Technologien noch relativ neu und es gibt nur wenige akademisch verwertbare Referenzen an denen man sich, beispielsweise für die Systemarchitektur, orientieren kann.

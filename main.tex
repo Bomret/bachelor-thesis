@@ -1,0 +1,93 @@
+% ***** PRÄAMBEL *****
+\documentclass[
+%  draft,                                                                      %% Entwurf. Entweder dies ODER final
+  final,                                                                       %% Final. Entweder dies ODER draft
+  12pt,                                                                        %% Schriftgröße
+  paper=a4,                                                                    %% Papierformat
+  english, ngerman,                                                            %% Sprache(n) des Dokuments (können auch mehrere sein: Auswahl mit \selectlanguage{})
+  toc=listof,                                                                  %% Verweis auf Abbildungs- und Tabellenverzeichnisse
+  chapterprefix=true,                                                          %% Kapitel beginnen mit "Kapitel NUMMER"
+%  twoside,                                                                    %% Zweiseitiger Druck
+%  openright,                                                                  %% Kapitelanfänge auf rechter Seite
+]{scrreprt}                                                                    %% Dokumentklasse
+
+% ***** Seitenlayout *****
+\usepackage[left=3.5cm,right=3cm,top=3cm,bottom=3.5cm]{geometry}               %% Seitenränder   
+\setcounter{secnumdepth}{0}                                                    %% Keine Nummerierung von Kapiteln etc.
+\usepackage{setspace}                                                          %% Ändern des Zeilenabstands
+\setstretch{1.1}                                                               %% Zeilenabstand von 1.1 Punkt
+
+% ***** Kopf- und Fußzeilen *****
+\usepackage{scrpage2}                                                          %% Seitenlayout, Fußnoten, Kopf- und Fußzeilen
+\pagestyle{scrheadings}                                                        %% Kopfzeilen einstellen
+\clearscrheadfoot                                                              %% Kopf und Fußzeilen leeren
+\automark{chapter}                                                             %% Kapitelnamen in Kopfzeile
+\ohead{\headmark}                                                              %% Kopfzeilentext am äußeren Rand
+\setheadsepline{0.4pt}                                                         %% Linie unter dem Kopfzeilentext
+\ofoot[\pagemark]{\pagemark}                                                   %% Seitennummern am äußeren Rand
+
+% ***** Laden der Packages *****
+\usepackage{mathtools}                                                         %% Mathekrempel für schöne Formeln
+\usepackage{graphicx}                                                          %% Grafiken
+\usepackage{booktabs}                                                          %% Qualitativ hochwertige horizontale Linien in Tabellen
+\usepackage{url}                                                               %% URLs im Text einbinden
+\usepackage{textcomp}                                                          %% Verschiedene Symbole und Sonderzeichen
+\usepackage{caption}[2008/08/24]                                               %% Unterschriften für Bilder, Tabellen, etc.
+\usepackage{babel}                                                             %% Paket für Silbentrennung etc.
+\usepackage[T1]{fontenc}                                                       %% Schriftencoding
+\usepackage[utf8]{inputenc}                                                    %% Eingabecodierung
+\usepackage{lmodern}                                                           %% Schriftart
+\usepackage{listings}                                                          %% Erlaubt Syntax-Korrektes Code-Einbinden
+\usepackage{color}                                                             %% Farben definieren
+\usepackage[svgnames]{xcolor}                                                  %% Vereinfacht den Umgang mit Farben
+\usepackage{supertabular}                                                      %% Einfachere Tabellen
+\usepackage{scrhack}                                                           %% Hacks, um Pakete mit KOMA-Klassen kompatibel zu machen
+\usepackage[pdfborder={0 0 0}, colorlinks=false]{hyperref}                     %% Klickbare Verweise in normaler Textfarbe und ohne Umrandung
+
+% ***** Bibliographie-Setup *****
+\usepackage[style=alphabetic-verb, hyperref=auto, backend=biber]{biblatex}   %% Havard-Notation für Naturwissenschaften
+\usepackage[babel, german=quotes]{csquotes}                                    %% Deutsche Anführungszeichen
+\bibliography{bibliographie/literatur.bib}                                     %% Pfad zur Bibliographiedatei
+
+
+% ***** DOKUMENT *****
+\begin{document}
+
+
+% ***** TITELSEITE *****
+\include{titel/titel}
+
+
+% ***** ZUSATZ *****
+\include{zusatz/codesegmente}
+
+\pagenumbering{roman}
+
+
+% ***** VERZEICHNISSE *****
+\tableofcontents                                                               %% Inhaltsverzeichnis
+\listoffigures                                                                 %% Abbildungsverzeichnis
+%\listoftables                                                                 %% Tabellenverzeichnis
+\lstlistoflistings                                                             %% Listingverzeichnis
+
+\addcontentsline{toc}{chapter}{Listings}                                       %% Referenz auf Listingverzeichnis im Inhaltsverzeichnis
+
+
+% ***** INHALT *****
+\include{kapitel/vorwort}
+
+\clearpage
+\pagenumbering{arabic}
+
+\include{kapitel/einleitung}
+\include{kapitel/technologien}
+\include{kapitel/konzeption}
+\include{kapitel/umsetzung}
+\include{kapitel/fazit}
+\include{kapitel/anhang}
+
+
+% ***** LITERATURVERZEICHNIS *****
+\printbibliography[heading=bibintoc]                                           %% Referenz auf Literaturverzeichnis im Inhaltsverzeichnis
+
+\end{document}

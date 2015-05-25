@@ -1,0 +1,28 @@
+\begin{appendix}
+\chapter{Verwendung und DVD-Inhalt}
+Für die Verwendung von Osiris müssen die folgenden Voraussetzungen erfüllt sein:
+\begin{enumerate}
+    \item Ein installiertes 64-Bit Java Development Kit, inklusive Runtime, mindestens in der Version 6
+    \item Der Pfad zum \textit{bin}-Ordner des JDK muss in der Umgebunsgvariable \textit{PATH} gesetzt sein. Auf Windowssystemen ist dies für gewöhnlich \texttt{\%PROGRAMFILES\%\-\textbackslash Java\-\textbackslash jdk1.7.0\_05\-\textbackslash bin}. Der Teil \texttt{jdk1.7.0\_05} kann hierbei abweichen.
+\end{enumerate}
+Für den einfacheren Start auf Windows und *nix-Rechnern liegen eine Batch- und eine Bash Script-Datei bei.
+
+Sobald der Server gestartet ist (Kommandozeilenausgabe zeigt "`Server started"'), kann die URL \url{http://localhost:9000} im Browser eingegeben werden. Es ist auch möglich sich von einem externen Gerät mit dem Server zu verbinden. Hierbei muss \textit{localhost} durch die IP-Adresse des Computers ersetzt werden, auf dem der Server läuft. Um die Anwendung zu beenden genügt ein Druck auf die Tastenkombination "`Strg + D"'.
+
+\subsection*{Bekannte Probleme}
+Aus Gründen die nicht mehr geklärt werden konnten oder Bugs im Drittanbietercode gibt es ein paar bekannte Probleme, die jedoch die Funktionalität des Programms nicht einschränken. Normalerweise reicht es den Browsertab neu zu laden.
+\begin{itemize}
+    \item Wenn der Tab oder das Bowserfenster geschlossen wird kann im Server eine \textit{java.nio.channels.ClosedChannelException} auftreten. Dies passiert wenn die WebSocketverbindung vom Browser geschlossen wird, auf Serverseite jedoch gerade ein Vorgang stattfindet. Dieses Problem liegt auf Seiten des Play! Frameworks und ist bekannt\footnote{\url{https://groups.google.com/forum/?fromgroups=\#!topic/play-framework/M6OZg4tN25U} (besucht am \today)}, jedoch gibt es derzeit noch keine befriedigende Lösung.
+    \item Wenn die kompilierten Dateien mit dem Befehl \texttt{play clean} bereinigt werden und danach eine erneute Ausführung versucht wird, kann ein Fehler mit der Meldung "`not found: type SceneInformation"' oder "`not found: type ShaderConfiguration"' auftreten. Derzeit ist nicht klar, warum die View Template-Klassen nach einem Clean nicht korrekt kompiliert werden. Im Fehlerfall muss die folgende Zeile zu den import-Statements in der Datei \texttt{osiris-play\-\textbackslash target\-\textbackslash scala-2.9.1\-\textbackslash src\_managed\-\textbackslash main\-\textbackslash views\-\textbackslash html\-\textbackslash index.template.scala} hinzugefügt werden: \texttt{import osiris.\-contracts.\-\{ShaderConfiguration,\- SceneInformation\}}. Danach kann der Code wieder kompiliert werden.
+\end{itemize}
+
+\subsection*{Inhalte der beiligenden DVD}
+\begin{itemize}
+    \item Osiris im Projektordner \textit{osiris-play}
+    \item SIRIS im Projektordner \textit{siris}
+    \item Das Play! Framework im Ordner \textit{play}
+    \item Eine Windows Batch-Datei zum Start der Anwendung namens \textit{startosiris.bat}
+    \item Eine Bash Script-Datei zum Start der Anwendung namens \textit{startosiris.sh}
+    \item Diese Arbeit als PDF
+\end{itemize}
+\end{appendix}
