@@ -1,5 +1,7 @@
 My (german) bachelor's thesis was about creating a WebGL based rendering and input handling component for the [SimulatorX Realtime Interactive System](https://github.com/simulator-x). It's written in [LaTeX](http://www.latex-project.org/).
 
+__Title__: Implementierung und Anbindung eines WebGL-Renderers an ein bestehendes Realtime Interactive System
+
 __University__: Beuth Hochschule für Technik (University of Applied Sciences)
 
 __Degree course__: Medieninformatik (Media Informatics)
